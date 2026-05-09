@@ -11,99 +11,59 @@ const S = {
 };
 
 /* ════════════════════════════════════════════
-   ESTÁTICO: carga index.json + /blogs/ (principal)
+   CARGA ESTÁTICA (GitHub Pages / cualquier servidor HTTP)
 ═════════════════════════════════════════════ */
 async function loadStatic() {
     try {
         const res = await fetch('./index.json');
-        if (!res.ok) throw new Error('index.json no encontrado');
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
         const data = await res.json();
         S.allPosts = (data.posts || []).filter(p => (p.category || 'game') === 'ulpomedia');
+        if (S.allPosts.length === 0) {
+            throw new Error('No se encontraron posts con categoría "ulpomedia".');
+        }
         S.allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
         applyFilters();
         buildSidebar();
         showList();
-        document.getElementById('status-text').innerText = `${S.allPosts.length} posts (estático)`;
+        document.getElementById('status-text').innerText = `${S.allPosts.length} posts cargados`;
         document.getElementById('nav-status').classList.add('visible');
         document.getElementById('empty-state').style.display = 'none';
     } catch (err) {
-        console.warn(err);
+        console.error(err);
         document.getElementById('empty-state').innerHTML = `
-      <div class="es-icon">⚠️</div>
-      <div class="es-title">Carga fallida</div>
-      <div class="es-sub">No se pudo cargar index.json desde la raíz.<br>Asegúrate de estar ejecutando este visor en un servidor web (Live Server, GitHub Pages) o usa el botón "Abrir carpeta".</div>
-      <button class="btn" onclick="openFolder()" style="margin-top:20px;">📁 Abrir carpeta manual</button>
-    `;
+            <div class="es-icon">⚠️</div>
+            <div class="es-title">Error de carga</div>
+            <div class="es-sub">
+                No se pudo cargar index.json. Asegúrate de que el visor esté corriendo en un servidor web<br>
+                (GitHub Pages, Live Server, etc.) y que la estructura de archivos sea correcta.
+                <br><br>
+                <code style="background:#000; padding:4px;">📁 /index.json + /blogs/*.md</code>
+            </div>
+        `;
     }
 }
 
-/* ════════════════════════════════════════════
-   SISTEMA DE ARCHIVOS MANUAL (FALLBACK)
-═════════════════════════════════════════════ */
+// Eliminamos el sistema de carpeta manual porque no funciona en GitHub Pages
+// (pero mantenemos las funciones vacías para que no den error si alguien llama a openFolder)
 async function openFolder() {
-    if (!window.showDirectoryPicker) return alert("File System Access API no soportada. Usa Chrome/Edge.");
-    try {
-        S.dir = await window.showDirectoryPicker({ mode: 'read' });
-        await loadManifest();
-    } catch (err) {
-        if (err.name !== 'AbortError') console.warn(err);
-    }
+    alert("Esta función solo está disponible en modo local con File System Access API. En GitHub Pages los posts se cargan automáticamente.");
 }
-
-async function loadManifest() {
-    try {
-        const handle = await S.dir.getFileHandle('index.json');
-        const raw = await (await handle.getFile()).text();
-        const manifest = JSON.parse(raw);
-        S.allPosts = (manifest.posts || []).filter(p => (p.category || 'game') === 'ulpomedia');
-        S.allPosts.sort((a,b) => new Date(b.date) - new Date(a.date));
-        applyFilters();
-        buildSidebar();
-        showList();
-        document.getElementById('status-text').innerText = `${S.allPosts.length} posts (manual)`;
-        document.getElementById('nav-status').classList.add('visible');
-        document.getElementById('empty-state').style.display = 'none';
-    } catch(e) {
-        alert("No se encontró index.json en la carpeta seleccionada.");
-    }
-}
+async function loadManifest() {}
 
 async function loadPostFile(slug) {
     if (S.cache[slug]) return S.cache[slug];
-    // intento estático (fetch desde /blogs/)
-    if (!S.dir) {
-        try {
-            const res = await fetch(`./blogs/${slug}.md`);
-            if (res.ok) {
-                const text = await res.text();
-                S.cache[slug] = text;
-                return text;
-            }
-        } catch (e) {}
+    // Solo intentamos fetch estático (desde /blogs/)
+    try {
+        const res = await fetch(`./blogs/${slug}.md`);
+        if (!res.ok) throw new Error(`No se encontró ${slug}.md`);
+        const text = await res.text();
+        S.cache[slug] = text;
+        return text;
+    } catch (e) {
+        console.error(e);
+        throw new Error(`No se pudo cargar el post ${slug}. Asegúrate de que el archivo existe en blogs/${slug}.md`);
     }
-    // si estamos en modo directorio manual
-    if (S.dir) {
-        const meta = S.allPosts.find(p => p.slug === slug);
-        const paths = [
-            async () => {
-                if (meta?.category) {
-                    const dir = await S.dir.getDirectoryHandle(meta.category);
-                    return dir.getFileHandle(`${slug}.md`);
-                }
-                throw '';
-            },
-            async () => S.dir.getFileHandle(`${slug}.md`)
-        ];
-        for (const attempt of paths) {
-            try {
-                const fileHandle = await attempt();
-                const text = await (await fileHandle.getFile()).text();
-                S.cache[slug] = text;
-                return text;
-            } catch(_) {}
-        }
-    }
-    throw new Error(`No se encontró ${slug}.md`);
 }
 
 /* ════════════════════════════════════════════
@@ -380,7 +340,15 @@ document.addEventListener('keydown', e=>{
     if((e.ctrlKey||e.metaKey) && e.key === 'o'){ e.preventDefault(); openFolder(); }
     if((e.ctrlKey||e.metaKey) && e.key === 'f' && S.view === 'list'){ e.preventDefault(); document.getElementById('search-input').focus(); }
 });
-if(!window.showDirectoryPicker){ let btn = document.getElementById('open-btn'); btn.textContent = '⚠ No compatible'; btn.disabled = true; }
+// Ocultar el botón de carpeta en GitHub Pages (no es necesario)
+if(window.location.protocol !== 'file:') {
+    const btn = document.getElementById('open-btn');
+    if(btn) btn.style.display = 'none';
+} else {
+    // Si está en file://, mostramos el botón pero con advertencia
+    const btn = document.getElementById('open-btn');
+    if(btn) btn.style.display = 'inline-block';
+}
 
-// Inicio: primero intenta carga estática
+// Inicio
 loadStatic();
