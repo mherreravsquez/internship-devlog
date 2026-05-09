@@ -29,7 +29,8 @@ async function loadStatic() {
         document.getElementById('status-text').innerText = `${S.allPosts.length} posts cargados`;
         document.getElementById('nav-status').classList.add('visible');
         document.getElementById('empty-state').style.display = 'none';
-    } catch (err) {
+    } 
+    catch (err) {
         console.error(err);
         document.getElementById('empty-state').innerHTML = `
             <div class="es-icon">⚠️</div>
@@ -44,18 +45,11 @@ async function loadStatic() {
     }
 }
 
-// Eliminamos el sistema de carpeta manual porque no funciona en GitHub Pages
-// (pero mantenemos las funciones vacías para que no den error si alguien llama a openFolder)
-async function openFolder() {
-    alert("Esta función solo está disponible en modo local con File System Access API. En GitHub Pages los posts se cargan automáticamente.");
-}
-async function loadManifest() {}
-
 async function loadPostFile(slug) {
     if (S.cache[slug]) return S.cache[slug];
     // Solo intentamos fetch estático (desde /blogs/)
     try {
-        const res = await fetch(`./blogs/${slug}.md`);
+        const res = await fetch(`blogs/${slug}.md`);
         if (!res.ok) throw new Error(`No se encontró ${slug}.md`);
         const text = await res.text();
         S.cache[slug] = text;
