@@ -1,0 +1,77 @@
+﻿{
+  "posts": [
+    {
+      "slug": "2026-05-05",
+      "title": {
+        "es": "Primer Día"
+      },
+      "date": "2026-05-05",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "tags": [
+        "devlog",
+        "corrección-bugs"
+      ],
+      "excerpt": {
+        "es": "Se inició la integración a la empresa, corrección de bugs y revisión general."
+      }
+    },
+    {
+      "slug": "2026-05-06",
+      "title": {
+        "es": "Tile destructible y corrección de bugs"
+      },
+      "date": "2026-05-06",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "tags": [
+        "devlog",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Optimización de código, implementación de mecánicas, etc."
+      }
+    },
+    {
+      "slug": "2026-05-07",
+      "title": {
+        "es": "Optimización, limpieza y nuevas funcionalidades en el sistema de enemigos"
+      },
+      "date": "2026-05-07",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "tags": [
+        "devlog",
+        "optimización",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Reorganización y documentación de scripts de enemigos, nuevo dron indestructible, y consolidación del movimiento de drones."
+      }
+    },
+    {
+      "slug": "2026-05-09",
+      "title": {
+        "es": "Resumen primera semana: 5 al 7 de mayo, 2026"
+      },
+      "date": "2026-05-09",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "tags": [
+        "devlog",
+        "resumen-semanal"
+      ],
+      "excerpt": {
+        "es": "Resumen primera semana en UlpoMedia."
+      }
+    }
+  ]
+}

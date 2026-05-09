@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>DEVLOG — PRÁCTICAS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Rajdhani:wght@400;500;600&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav id="nav">
+  <div class="nav-logo">
+    <span class="acc">DEV</span>LOG<span class="dim">VIEWER</span>
+  </div>
+  <div id="search-wrap">
+    <input type="text" id="search-input" placeholder="Buscar posts..." autocomplete="off">
+  </div>
+  <div id="nav-status">
+    <span class="status-dot"></span>
+    <span id="status-text"></span>
+  </div>
+  <button class="btn primary" id="open-btn" onclick="openFolder()">📁 Abrir carpeta</button>
+  <button class="btn primary" onclick="openEditor()">✎ Nuevo post</button>
+</nav>
+
+<div id="app">
+  <aside id="sidebar">
+    <div id="sb-content">
+      <div class="sb-section">
+        <div class="sb-label">Repositorio</div>
+        <div style="font-family:var(--mono);font-size:9px;color:var(--text-muted);">Cargando archivos...</div>
+      </div>
+    </div>
+  </aside>
+  <main id="main">
+    <div id="empty-state" style="display:flex;">
+      <div class="es-icon">📁</div>
+      <div class="es-title">Cargando posts</div>
+      <div class="es-sub">Leyendo index.json y archivos .md desde la carpeta actual.</div>
+    </div>
+    <div id="list-view" style="display:none;">
+      <div class="list-header"><div class="list-title">DEV<span class="acc">LOG</span></div><div class="list-count" id="list-count"></div></div>
+      <div id="active-filters"></div>
+      <div id="post-list"></div>
+    </div>
+    <div id="post-view" style="display:none;">
+      <button class="back-btn" onclick="showList()">← Volver al listado</button>
+      <div id="post-header-el" class="post-header"></div>
+      <div id="post-body-el" class="post-body"></div>
+    </div>
+    <div id="editor-view" style="display:none;">
+      <div class="editor-container">
+        <div class="editor-header">
+          <h2>✎ Nuevo Devlog</h2>
+          <button class="btn ghost" onclick="showList()">← Cancelar</button>
+        </div>
+        <div class="editor-grid">
+          <input class="input" id="ed-title" placeholder="Título del post">
+          <div class="editor-row">
+            <input class="input" id="ed-project" placeholder="Proyecto (ej: ULPO Engine)">
+            <input class="input" id="ed-category" placeholder="Categoría (game / ulpomedia)">
+          </div>
+          <div class="editor-row">
+            <input class="input" id="ed-tags" placeholder="Etiquetas (separadas por coma)">
+            <select class="input" id="ed-type">
+              <option value="devlog">Devlog</option>
+              <option value="update">Update</option>
+              <option value="release">Release</option>
+            </select>
+          </div>
+          <textarea class="editor-textarea" id="ed-body" placeholder="Escribe tu markdown aquí..."></textarea>
+          <div class="editor-actions">
+            <button class="btn primary" onclick="downloadMD()">⬇ Descargar .md</button>
+            <button class="btn" onclick="copyIndexEntry()">📋 Copiar para index.json</button>
+          </div>
+          <label class="sb-label">Vista previa JSON</label>
+          <textarea class="input" id="json-preview" readonly style="height:110px;"></textarea>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
