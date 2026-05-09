@@ -47,17 +47,28 @@ async function loadStatic() {
 
 async function loadPostFile(slug) {
     if (S.cache[slug]) return S.cache[slug];
-    // Solo intentamos fetch estático (desde /blogs/)
-    try {
-        const res = await fetch(`blogs/${slug}.md`);
-        if (!res.ok) throw new Error(`No se encontró ${slug}.md`);
-        const text = await res.text();
-        S.cache[slug] = text;
-        return text;
-    } catch (e) {
-        console.error(e);
-        throw new Error(`No se pudo cargar el post ${slug}. Asegúrate de que el archivo existe en blogs/${slug}.md`);
+
+    // Intenta primero la URL sin extensión, que es la que realmente sirve GitHub Pages
+    const candidates = [
+        `./blogs/${slug}`,            // ✅ Esta es la URL que sí funciona
+        `./blogs/${slug}.md`,
+        `./${slug}`,
+        `./${slug}.md`,
+        `/blogs/${slug}`
+    ];
+
+    for (const url of candidates) {
+        try {
+            const res = await fetch(url);
+            if (res.ok) {
+                const text = await res.text();
+                S.cache[slug] = text;
+                return text;
+            }
+        } catch (e) { }
     }
+
+    throw new Error(`❌ No se pudo cargar el post ${slug}. Archivo no encontrado.`);
 }
 
 /* ════════════════════════════════════════════
