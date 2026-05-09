@@ -48,13 +48,12 @@ async function loadStatic() {
 async function loadPostFile(slug) {
     if (S.cache[slug]) return S.cache[slug];
 
-    // Intenta primero la URL sin extensión, que es la que realmente sirve GitHub Pages
+    // Sin Jekyll activo, se necesita la extensión .md explícitamente
     const candidates = [
-        `./blogs/${slug}`,            // ✅ Esta es la URL que sí funciona
-        `./blogs/${slug}.md`,
-        `./${slug}`,
+        `./blogs/${slug}.md`,   // Ruta principal
+        `./blogs/${slug}.MD`,   // Por si acaso
         `./${slug}.md`,
-        `/blogs/${slug}`
+        `/blogs/${slug}.md`
     ];
 
     for (const url of candidates) {
@@ -63,12 +62,13 @@ async function loadPostFile(slug) {
             if (res.ok) {
                 const text = await res.text();
                 S.cache[slug] = text;
+                console.log(`✅ Cargado desde: ${url}`);
                 return text;
             }
         } catch (e) { }
     }
 
-    throw new Error(`❌ No se pudo cargar el post ${slug}. Archivo no encontrado.`);
+    throw new Error(`❌ No se pudo cargar el post ${slug}. Archivo no encontrado como .md en blogs/`);
 }
 
 /* ════════════════════════════════════════════
