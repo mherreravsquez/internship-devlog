@@ -93,32 +93,62 @@ function parseFrontmatter(raw) {
 function renderMd(md) {
     if (!md) return '';
     let html = md;
+
+    // 1. Proteger bloques de código
     const blocks = [];
     html = html.replace(/```(\w*)\n?([\s\S]*?)```/g, (_, lang, code) => {
-        const i = blocks.length;
-        const esc = code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-        blocks.push(`<pre><code class="lang-${lang||'txt'}">${esc}</code></pre>`);
-        return `\x00BLK${i}\x00`;
+        const esc = code.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+        blocks.push(`<pre><code class="lang-${lang || 'txt'}">${esc}</code></pre>`);
+        return `\x00BLK${blocks.length - 1}\x00`;
     });
+
+    // 2. Proteger código inline
     const inlines = [];
     html = html.replace(/`([^`\n]+)`/g, (_, c) => {
-        const i = inlines.length;
-        const esc = c.replace(/&/g,'&amp;').replace(/</g,'&lt;');
+        const esc = c.replace(/&/g, '&amp;').replace(/</g, '&lt;');
         inlines.push(`<code>${esc}</code>`);
-        return `\x00INL${i}\x00`;
+        return `\x00INL${inlines.length - 1}\x00`;
     });
-    html = html.replace(/(https?:\/\/[^\s<>]+\.(?:png|jpg|jpeg|gif|webp)(?:\?[^\s<>]*)?)/gi,
-        url => `<img src="${url}" loading="lazy" style="max-width:100%; margin:16px 0; display:block;">`);
-    html = html.replace(/(https?:\/\/[^\s<>]+\.(?:mp4|webm|mov)(?:\?[^\s<>]*)?)/gi,
-        url => `<video controls style="max-width:100%; margin:16px 0; display:block;"><source src="${url}" type="video/mp4"></video>`);
-    html = html.replace(/&(?!amp;|lt;|gt;|#x00)/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" style="max-width:100%; display:block;">');
+
+    // 3. Proteger vídeos e imágenes (antes de escapar)
+    const media = [];
+    html = html.replace(/(https?:\/\/[^\s<>]+\.(?:mp4|webm|mov)(?:\?[^\s<>]*)?)/gi, (url) => {
+        const tag = `<video controls style="max-width:100%; margin:16px 0; display:block;"><source src="${url}" type="video/mp4"></video>`;
+        media.push(tag);
+        return `\x00MED${media.length - 1}\x00`;
+    });
+    html = html.replace(/(https?:\/\/[^\s<>]+\.(?:png|jpg|jpeg|gif|webp)(?:\?[^\s<>]*)?)/gi, (url) => {
+        const tag = `<img src="${url}" loading="lazy" style="max-width:100%; display:block; margin:16px 0;">`;
+        media.push(tag);
+        return `\x00MED${media.length - 1}\x00`;
+    });
+    // También proteger markdown image syntax ![alt](url)
+    html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => {
+        const tag = `<img src="${url}" alt="${alt}" loading="lazy" style="max-width:100%; display:block; margin:16px 0;">`;
+        media.push(tag);
+        return `\x00MED${media.length - 1}\x00`;
+    });
+
+    // 4. Escapar el resto del HTML (solo lo que no está protegido)
+    html = html.replace(/&(?!amp;|lt;|gt;|#x00)/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;');
+
+    // 5. Convertir markdown links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>').replace(/^## (.*$)/gm, '<h2>$1</h2>').replace(/^# (.*$)/gm, '<h1>$1</h1>');
-    html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>').replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // 6. Encabezados, negritas, cursivas (sin conflictos)
+    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>')
+        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
+        .replace(/^# (.*$)/gm, '<h1>$1</h1>');
+    html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    // 7. Tablas, blockquotes, listas, hr
     html = html.replace(/^\|(.+)\|\n\|[-| :]+\|\n((?:\|.+\|\n?)*)/gm, (_, hdr, rows) => {
-        const th = hdr.split('|').filter(c=>c.trim()).map(c=>`<th>${c.trim()}</th>`).join('');
-        const trs = rows.trim().split('\n').map(r => `<tr>${r.split('|').filter(c=>c.trim()).map(c=>`<td>${c.trim()}</td>`).join('')}</tr>`).join('');
+        const th = hdr.split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('');
+        const trs = rows.trim().split('\n').map(r => `<tr>${r.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('')}</tr>`).join('');
         return `<table><thead><tr>${th}</td></thead><tbody>${trs}</tbody></table>`;
     });
     html = html.replace(/^&gt; (.*$)/gm, '<blockquote>$1</blockquote>\n');
@@ -129,21 +159,27 @@ function renderMd(md) {
     html = html.replace(/((?:^[ \t]*[-*+] .+\n?)+)/gm, m => `<ul>${m.trim().split('\n').map(l => `<li>${l.replace(/^[ \t]*[-*+] /, '')}</li>`).join('')}</ul>`);
     html = html.replace(/((?:^\d+\. .+\n?)+)/gm, m => `<ol>${m.trim().split('\n').map(l => `<li>${l.replace(/^\d+\. /, '')}</li>`).join('')}</ol>`);
     html = html.replace(/^---$/gm, '<hr>');
+
+    // 8. Párrafos justificados (evitar envolver etiquetas protegidas)
     const paragraphs = html.split(/\n{2,}/);
     const justified = paragraphs.map(para => {
         para = para.trim();
         if (!para) return '';
-        if (/^<(h[1-6]|ul|ol|blockquote|pre|table|hr|img|video|div)/.test(para)) return para;
-        if (!para.includes('<') || para.indexOf('<') > 0) return `<p style="text-align: justify; margin-bottom: 1rem;">${para.replace(/\n/g, '<br>')}</p>`;
-        return para.split(/\n/).map(line => {
-            if (line.trim() && !line.match(/^<(h[1-6]|ul|ol|li|blockquote|pre|table|hr|img|video|div)/))
-                return `<p style="text-align: justify; margin-bottom: 0.5rem;">${line}</p>`;
-            return line;
-        }).join('');
+        // Si comienza con marcador, no envolver en párrafo (ya será una etiqueta)
+        if (/^\x00(BLK|INL|MED)/.test(para)) return para;
+        // Si ya es un bloque HTML conocido, no envolver
+        if (/^<(h[1-6]|ul|ol|blockquote|pre|table|hr|div)/i.test(para)) return para;
+        // Envolver en <p> justificado
+        return `<p style="text-align: justify; margin-bottom: 1rem;">${para.replace(/\n/g, '<br>')}</p>`;
     }).join('\n');
+
     html = justified;
-    blocks.forEach((c,i) => html = html.replace(new RegExp(`\\x00BLK${i}\\x00`, 'g'), c));
-    inlines.forEach((c,i) => html = html.replace(new RegExp(`\\x00INL${i}\\x00`, 'g'), c));
+
+    // 9. Restaurar marcadores
+    blocks.forEach((c, i) => html = html.replace(new RegExp(`\\x00BLK${i}\\x00`, 'g'), c));
+    inlines.forEach((c, i) => html = html.replace(new RegExp(`\\x00INL${i}\\x00`, 'g'), c));
+    media.forEach((c, i) => html = html.replace(new RegExp(`\\x00MED${i}\\x00`, 'g'), c));
+
     return html;
 }
 
