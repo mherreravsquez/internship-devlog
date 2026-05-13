@@ -39,11 +39,11 @@
       }
     },
     {
-      "slug": "2026-05-07",
+      "slug": "2026-05-08",
       "title": {
         "es": "Optimización, limpieza y nuevas funcionalidades en el sistema de enemigos"
       },
-      "date": "2026-05-07",
+      "date": "2026-05-08",
       "type": "devlog",
       "lang": "es",
       "project": "dana-relics-1-dx",

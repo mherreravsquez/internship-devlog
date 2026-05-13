@@ -137,14 +137,31 @@ function renderMd(md) {
     // 5. Convertir markdown links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 
-    // 6. Encabezados, negritas, cursivas (sin conflictos)
-    html = html.replace(/^### (.*$)/gm, '<h3>$1</h3>')
-        .replace(/^## (.*$)/gm, '<h2>$1</h2>')
-        .replace(/^# (.*$)/gm, '<h1>$1</h1>');
-    html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
-        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>')
-        .replace(/\~\~(.+?)\~\~/g, '<del>$1</del>');
+    // 6. Headers + text formatting
+    html = html
+        .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+        .replace(/^## (.+)$/gm, '<h2>$1</h2>')
+        .replace(/^# (.+)$/gm, '<h1>$1</h1>');
+
+    // Bold + italic
+    html = html
+        // ***bold italic***
+        .replace(/(?<!\*)\*\*\*([^\n]+?)\*\*\*(?!\*)/g, '<strong><em>$1</em></strong>')
+
+        // **bold**
+        .replace(/(?<!\*)\*\*([^\n]+?)\*\*(?!\*)/g, '<strong>$1</strong>')
+
+        // __bold__
+        .replace(/(?<!_)__([^\n]+?)__(?!_)/g, '<strong>$1</strong>')
+
+        // *italic*
+        .replace(/(?<!\*)\*([^\s*][^*\n]*?)\*(?!\*)/g, '<em>$1</em>')
+
+        // _italic_
+        .replace(/(?<!_)_([^\s_][^_\n]*?)_(?!_)/g, '<em>$1</em>')
+
+        // ~~strike~~
+        .replace(/~~([^\n]+?)~~/g, '<del>$1</del>');
 
     // 7. Tablas
     html = html.replace(/^\|(.+)\|\n\|[-| :]+\|\n((?:\|.+\|\n?)*)/gm, (_, hdr, rows) => {
@@ -162,43 +179,57 @@ function renderMd(md) {
 
     // Listas anidadas (no ordenadas y ordenadas)
     function processListItems(listText, ordered = false) {
-        const lines = listText.split('\n');
-        const stack = [{ level: 0, items: [], tag: ordered ? 'ol' : 'ul' }];
-        const result = [];
+        const lines = listText.trim().split('\n');
 
-        for (let line of lines) {
+        let html = '';
+        let currentLevel = 0;
+
+        const openTag = (lvl, type) => {
+            html += `<${type}>`;
+        };
+
+        const closeTag = (lvl, type) => {
+            html += `</li></${type}>`;
+        };
+
+        lines.forEach((line, index) => {
             const unorderedMatch = line.match(/^(\s*)[-*+]\s+(.*)$/);
             const orderedMatch = line.match(/^(\s*)\d+\.\s+(.*)$/);
+
             const match = unorderedMatch || orderedMatch;
-            if (!match) continue;
+            if (!match) return;
 
-            const content = match[2].trim();
-            const indent = match[1].replace(/\t/g, '    ').length;
-            const level = Math.floor(indent / 2); // supone 2 espacios por nivel
+            const spaces = match[1].replace(/\t/g, '    ').length;
+            const level = Math.floor(spaces / 2);
 
-            if (level > stack[stack.length - 1].level) {
-                // Abrir nueva lista hija
-                stack.push({ level, items: [], tag: unorderedMatch ? 'ul' : 'ol' });
-                result.push(`<${stack[stack.length - 1].tag}>`);
-            } else if (level < stack[stack.length - 1].level) {
-                // Cerrar listas hasta el nivel adecuado
-                while (level < stack[stack.length - 1].level) {
-                    const last = stack.pop();
-                    result.push(`</li></${last.tag}>`);
-                }
-            } else if (stack.length > 1 && level === stack[stack.length - 1].level && stack[stack.length - 2].items.length > 0) {
-                // Cerrar el <li> anterior si estamos en el mismo nivel y no es el primer elemento
-                result.push(`</li>`);
+            const type = unorderedMatch ? 'ul' : 'ol';
+            const content = match[2];
+
+            while (currentLevel > level) {
+                html += `</li></ul>`;
+                currentLevel--;
             }
-            result.push(`<li>${content}`);
-            stack[stack.length - 1].items.push(content);
+
+            while (currentLevel < level) {
+                html += `<ul>`;
+                currentLevel++;
+            }
+
+            if (index > 0) {
+                html += `</li>`;
+            }
+
+            html += `<li>${content}`;
+        });
+
+        while (currentLevel > 0) {
+            html += `</li></ul>`;
+            currentLevel--;
         }
-        while (stack.length > 1) {
-            const last = stack.pop();
-            result.push(`</li></${last.tag}>`);
-        }
-        // El primer nivel lo cerramos fuera
-        return result.join('');
+
+        html += `</li>`;
+
+        return `<${ordered ? 'ol' : 'ul'}>${html}</${ordered ? 'ol' : 'ul'}>`;
     }
 
     // Aplicar a listas no ordenadas y ordenadas
