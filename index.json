@@ -12,7 +12,6 @@
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/dnt9Y62.mp4",
       "tags": [
-        "devlog",
         "corrección-bugs"
       ],
       "excerpt": {
@@ -31,7 +30,6 @@
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/hdb0cGU.mp4",
       "tags": [
-        "devlog",
         "implementación-mecánicas"
       ],
       "excerpt": {
@@ -50,7 +48,6 @@
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/pl4KvZC.png",
       "tags": [
-        "devlog",
         "optimización",
         "implementación-mecánicas"
       ],
@@ -69,9 +66,7 @@
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/dH4yvwE.mp4",
-      "tags": [
-        "devlog"
-      ],
+      "tags": null,
       "excerpt": {
         "es": "Resumen primera semana en UlpoMedia."
       }
@@ -88,11 +83,28 @@
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/zrulYdg.mp4",
       "tags": [
-        "devlog",
         "testing"
       ],
       "excerpt": {
         "es": "Testeos de drones y su patrullaje por waypoints. Mejora del comportamiento del enemigo torreta."
+      }
+    },
+    {
+      "slug": "2026-05-13",
+      "title": {
+        "es": "Partículas de muerte, parry limitado y ajustes de capas"
+      },
+      "date": "2026-05-12",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/knS9heq.mp4",
+      "tags": [
+        "corrección-bugs"
+      ],
+      "excerpt": {
+        "es": "Partículas de muerte, parry solo en suelo y ajuste de capas en niveles."
       }
     }
   ]
