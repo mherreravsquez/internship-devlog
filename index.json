@@ -10,6 +10,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/dnt9Y62.mp4",
       "tags": [
         "devlog",
         "corrección-bugs"
@@ -28,6 +29,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/hdb0cGU.mp4",
       "tags": [
         "devlog",
         "implementación-mecánicas"
@@ -46,6 +48,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/pl4KvZC.png",
       "tags": [
         "devlog",
         "optimización",
@@ -65,12 +68,31 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/dH4yvwE.mp4",
       "tags": [
-        "devlog",
-        "resumen-semanal"
+        "devlog"
       ],
       "excerpt": {
         "es": "Resumen primera semana en UlpoMedia."
+      }
+    },
+    {
+      "slug": "2026-05-12",
+      "title": {
+        "es": "Tests de campo, feedback visual y documentación de sistemas"
+      },
+      "date": "2026-05-12",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/zrulYdg.mp4",
+      "tags": [
+        "devlog",
+        "testing"
+      ],
+      "excerpt": {
+        "es": "Testeos de drones y su patrullaje por waypoints. Mejora del comportamiento del enemigo torreta."
       }
     }
   ]

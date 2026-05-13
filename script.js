@@ -29,7 +29,7 @@ async function loadStatic() {
         document.getElementById('status-text').innerText = `${S.allPosts.length} posts cargados`;
         document.getElementById('nav-status').classList.add('visible');
         document.getElementById('empty-state').style.display = 'none';
-    } 
+    }
     catch (err) {
         console.error(err);
         document.getElementById('empty-state').innerHTML = `
@@ -143,21 +143,69 @@ function renderMd(md) {
         .replace(/^# (.*$)/gm, '<h1>$1</h1>');
     html = html.replace(/\*\*\*(.+?)\*\*\*/g, '<strong><em>$1</em></strong>')
         .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-        .replace(/\*(.+?)\*/g, '<em>$1</em>');
+        .replace(/\*(.+?)\*/g, '<em>$1</em>')
+        .replace(/\~\~(.+?)\~\~/g, '<del>$1</del>');
 
-    // 7. Tablas, blockquotes, listas, hr
+    // 7. Tablas
     html = html.replace(/^\|(.+)\|\n\|[-| :]+\|\n((?:\|.+\|\n?)*)/gm, (_, hdr, rows) => {
         const th = hdr.split('|').filter(c => c.trim()).map(c => `<th>${c.trim()}</th>`).join('');
-        const trs = rows.trim().split('\n').map(r => `<tr>${r.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('')}</tr>`).join('');
-        return `<table><thead><tr>${th}</td></thead><tbody>${trs}</tbody></table>`;
+        const trs = rows.trim().split('\n').map(r => `<tr>${r.split('|').filter(c => c.trim()).map(c => `<td>${c.trim()}</td>`).join('')}</td>`).join('');
+        return `<table><thead><tr>${th}</tr></thead><tbody>${trs}</tbody></table>`;
     });
+
+    // Blockquotes
     html = html.replace(/^&gt; (.*$)/gm, '<blockquote>$1</blockquote>\n');
     html = html.replace(/(<blockquote>.*?<\/blockquote>\n?)+/gs, (match) => {
         const content = match.replace(/<\/?blockquote>/g, '').trim();
         return `<blockquote>${content}</blockquote>\n`;
     });
-    html = html.replace(/((?:^[ \t]*[-*+] .+\n?)+)/gm, m => `<ul>${m.trim().split('\n').map(l => `<li>${l.replace(/^[ \t]*[-*+] /, '')}</li>`).join('')}</ul>`);
-    html = html.replace(/((?:^\d+\. .+\n?)+)/gm, m => `<ol>${m.trim().split('\n').map(l => `<li>${l.replace(/^\d+\. /, '')}</li>`).join('')}</ol>`);
+
+    // Listas anidadas (no ordenadas y ordenadas)
+    function processListItems(listText, ordered = false) {
+        const lines = listText.split('\n');
+        const stack = [{ level: 0, items: [], tag: ordered ? 'ol' : 'ul' }];
+        const result = [];
+
+        for (let line of lines) {
+            const unorderedMatch = line.match(/^(\s*)[-*+]\s+(.*)$/);
+            const orderedMatch = line.match(/^(\s*)\d+\.\s+(.*)$/);
+            const match = unorderedMatch || orderedMatch;
+            if (!match) continue;
+
+            const content = match[2].trim();
+            const indent = match[1].replace(/\t/g, '    ').length;
+            const level = Math.floor(indent / 2); // supone 2 espacios por nivel
+
+            if (level > stack[stack.length - 1].level) {
+                // Abrir nueva lista hija
+                stack.push({ level, items: [], tag: unorderedMatch ? 'ul' : 'ol' });
+                result.push(`<${stack[stack.length - 1].tag}>`);
+            } else if (level < stack[stack.length - 1].level) {
+                // Cerrar listas hasta el nivel adecuado
+                while (level < stack[stack.length - 1].level) {
+                    const last = stack.pop();
+                    result.push(`</li></${last.tag}>`);
+                }
+            } else if (stack.length > 1 && level === stack[stack.length - 1].level && stack[stack.length - 2].items.length > 0) {
+                // Cerrar el <li> anterior si estamos en el mismo nivel y no es el primer elemento
+                result.push(`</li>`);
+            }
+            result.push(`<li>${content}`);
+            stack[stack.length - 1].items.push(content);
+        }
+        while (stack.length > 1) {
+            const last = stack.pop();
+            result.push(`</li></${last.tag}>`);
+        }
+        // El primer nivel lo cerramos fuera
+        return result.join('');
+    }
+
+    // Aplicar a listas no ordenadas y ordenadas
+    html = html.replace(/((?:^[ \t]*[-*+] .+\n?)+)/gm, (match) => processListItems(match, false));
+    html = html.replace(/((?:^\d+\. .+\n?)+)/gm, (match) => processListItems(match, true));
+
+    // HR
     html = html.replace(/^---$/gm, '<hr>');
 
     // 8. Párrafos justificados (evitar envolver etiquetas protegidas)
@@ -170,7 +218,7 @@ function renderMd(md) {
         // Si ya es un bloque HTML conocido, no envolver
         if (/^<(h[1-6]|ul|ol|blockquote|pre|table|hr|div)/i.test(para)) return para;
         // Envolver en <p> justificado
-        return `<p style="text-align: justify; margin-bottom: 1rem;">${para.replace(/\n/g, '<br>')}</p>`;
+        return `<p class="md-paragraph">${para.replace(/\n/g, '<br>')}</p>`;
     }).join('\n');
 
     html = justified;
@@ -243,6 +291,23 @@ function buildSidebar(){
     document.getElementById('sb-content').innerHTML = html; syncChips();
 }
 
+/* ── Thumbnail helper ── */
+function thumbHTML(p) {
+    const url = (p.thumbnail || '').trim();
+    const proj = (p.project || 'DEVLOG').toUpperCase();
+    if (!url) {
+        return `<div class="card-thumb-fallback" data-project="${proj}"><span class="no-thumb-icon">◈</span></div>`;
+    }
+    // gifv → mp4 (Imgur specific)
+    const isGifv = url.endsWith('.gifv');
+    const isVideo = /\.(mp4|webm|mov)(\?.*)?$/i.test(url) || isGifv;
+    if (isVideo) {
+        const src = isGifv ? url.replace('.gifv', '.mp4') : url;
+        return `<video autoplay loop muted playsinline><source src="${src}" type="video/mp4"></video>`;
+    }
+    return `<img src="${url}" alt="${getTitle(p)}" loading="lazy">`;
+}
+
 function renderList(){
     const posts = S.posts;
     document.getElementById('list-count').innerText = `${posts.length} post${posts.length!==1?'s':''}`;
@@ -253,11 +318,33 @@ function renderList(){
     posts.forEach(p=>{ let key = p.date ? p.date.slice(0,7) : 'sin-fecha'; if(!groups.has(key)) groups.set(key,[]); groups.get(key).push(p); });
     let html='';
     for(let [key, monthPosts] of groups.entries()){
-        html += `<div class="month-label">— ${monthLabel(key)}</div>`;
+        html += `<div class="month-group">`;
+        html += `<div class="month-label">${monthLabel(key)}</div>`;
+        html += `<div class="month-cards">`;
         monthPosts.forEach(p=>{
             const typeClass = p.type || 'update';
-            html += `<div class="post-card t-${typeClass}" onclick="openPost('${p.slug}')"><div class="card-bar"></div><div class="card-inner"><div class="card-meta"><span class="card-date">${p.date||''}</span><span class="type-badge ${typeClass}">${typeClass}</span>${p.project ? `<span class="card-project">⌥ ${p.project}</span>` : ''}</div><div class="card-title">${getTitle(p)}</div>${getExcerpt(p) ? `<div class="card-excerpt">${getExcerpt(p)}</div>` : ''}${(p.tags||[]).length ? `<div class="card-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>` : ''}</div></div>`;
+            const title = getTitle(p);
+            const excerpt = getExcerpt(p);
+            html += `
+            <div class="post-card t-${typeClass}" onclick="openPost('${p.slug}')">
+                <div class="card-thumb">
+                    ${thumbHTML(p)}
+                    <div class="card-type-overlay">
+                        <span class="type-badge ${typeClass}">${typeClass}</span>
+                        ${p.project ? `<span class="card-project" style="font-size:7px;letter-spacing:.08em;opacity:.8;">⌥ ${p.project}</span>` : ''}
+                    </div>
+                </div>
+                <div class="card-inner">
+                    <div class="card-meta">
+                        <span class="card-date">${p.date||''}</span>
+                    </div>
+                    <div class="card-title">${title}</div>
+                    ${excerpt ? `<div class="card-excerpt">${excerpt}</div>` : ''}
+                    ${(p.tags||[]).length ? `<div class="card-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>` : ''}
+                </div>
+            </div>`;
         });
+        html += `</div></div>`;
     }
     listEl.innerHTML = html;
 }
@@ -347,6 +434,7 @@ function copyIndexEntry() {
     let excerpt = body.replace(/\n/g, ' ').slice(0, 120);
     if (excerpt.length === 120) excerpt += '…';
     const tags = tagsRaw ? tagsRaw.split(',').map(t => t.trim()).filter(t => t) : [];
+    const thumbnail = document.getElementById('ed-thumbnail')?.value.trim() || '';
     const entry = {
         slug: slug,
         title: { es: title },
@@ -355,6 +443,7 @@ function copyIndexEntry() {
         lang: "es",
         project: project || "",
         category: category || "ulpomedia",
+        thumbnail: thumbnail,
         tags: tags,
         excerpt: { es: excerpt }
     };

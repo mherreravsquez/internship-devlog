@@ -12,11 +12,14 @@
 <body>
 
 <nav id="nav">
+  <div class="nav-corner tl"></div>
+  <div class="nav-corner br"></div>
   <div class="nav-logo">
     <span class="acc">DEV</span>LOG<span class="dim">PRÁCTICAS</span>
   </div>
   <div id="search-wrap">
-    <input type="text" id="search-input" placeholder="Buscar posts..." autocomplete="off">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="search-input" placeholder="BUSCAR POSTS..." autocomplete="off">
   </div>
   <div id="nav-status">
     <span class="status-dot"></span>
@@ -27,6 +30,8 @@
 
 <div id="app">
   <aside id="sidebar">
+    <div class="sb-bracket tl">┌</div>
+    <div class="sb-bracket br">┘</div>
     <div id="sb-content">
       <div class="sb-section">
         <div class="sb-label">Repositorio</div>
@@ -38,10 +43,14 @@
     <div id="empty-state" style="display:flex;">
       <div class="es-icon">📁</div>
       <div class="es-title">Cargando posts</div>
-      <div class="es-sub">Leyendo index.json y archivos .md desde la carpeta actual.</div>
+      <div class="es-sub">Leyendo <code>index.json</code> y archivos <code>.md</code> desde la carpeta actual.</div>
     </div>
     <div id="list-view" style="display:none;">
-      <div class="list-header"><div class="list-title">DEV<span class="acc">LOG</span></div><div class="list-count" id="list-count"></div></div>
+      <div class="list-header">
+        <div class="list-title">DEV<span class="acc">LOG</span></div>
+        <div class="list-count" id="list-count"></div>
+        <div class="list-header-line"></div>
+      </div>
       <div id="active-filters"></div>
       <div id="post-list"></div>
     </div>
@@ -70,6 +79,7 @@
               <option value="release">Release</option>
             </select>
           </div>
+          <input class="input" id="ed-thumbnail" placeholder="URL Thumbnail 16:9 (imgur, png/gif/mp4)">
           <textarea class="editor-textarea" id="ed-body" placeholder="Escribe tu markdown aquí..."></textarea>
           <div class="editor-actions">
             <button class="btn primary" onclick="downloadMD()">⬇ Descargar .md</button>
