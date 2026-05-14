@@ -106,6 +106,25 @@
       "excerpt": {
         "es": "Partículas de muerte, parry solo en suelo y ajuste de capas en niveles."
       }
+    },
+    {
+      "slug": "2026-05-14",
+      "title": {
+        "es": "Parkour con spikes y Reseteo"
+      },
+      "date": "2026-05-14",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/T7rrCYc.mp4",
+      "tags": [
+        "corrección-bugs",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Parallax con SpriteRenderer, fix de torreta, parry a pinchos y sistema de reseteo de nivel."
+      }
     }
   ]
 }
