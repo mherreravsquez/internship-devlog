@@ -125,6 +125,25 @@
       "excerpt": {
         "es": "Parallax con SpriteRenderer, fix de torreta, parry a pinchos y sistema de reseteo de nivel."
       }
+    },
+    {
+      "slug": "2026-05-15",
+      "title": {
+        "es": "Finalización del ResetManager y corrección de Falling Platform"
+      },
+      "date": "2026-05-15",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "corrección-bugs",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Completado el reseteo de gameplay y corregida la plataforma Falling Platform."
+      }
     }
   ]
 }
