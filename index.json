@@ -144,6 +144,22 @@
       "excerpt": {
         "es": "Completado el reseteo de gameplay y corregida la plataforma Falling Platform."
       }
+    },
+    {
+      "slug": "2026-05-16",
+      "title": {
+        "es": "Resumen segunda semana: 12 al 15 de mayo, 2026"
+      },
+      "date": "2026-05-16",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/zrulYdg.mp4",
+      "tags": null,
+      "excerpt": {
+        "es": "Resumen segunda semana en UlpoMedia."
+      }
     }
   ]
 }
