@@ -160,6 +160,22 @@
       "excerpt": {
         "es": "Resumen segunda semana en UlpoMedia."
       }
+    },
+    {
+      "slug": "2026-05-19",
+      "title": {
+        "es": "Parallax arreglado y layers en niveles del mundo 1"
+      },
+      "date": "2026-05-19",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/fe7qhyg.mp4",
+      "tags": ["corrección-bugs"],
+      "excerpt": {
+        "es": "Corrección del parallax con clonado de sprites y ajuste de capas en niveles del mundo 1 (1_1 al 1_3)."
+      }
     }
   ]
 }
