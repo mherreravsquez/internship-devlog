@@ -176,6 +176,22 @@
       "excerpt": {
         "es": "Corrección del parallax con clonado de sprites y ajuste de capas en niveles del mundo 1 (1_1 al 1_3)."
       }
+    },
+    {
+      "slug": "2026-05-20",
+      "title": {
+        "es": "Cinta transportadora y sistema de SFX"
+      },
+      "date": "2026-05-20",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/kpNgI40.mp4",
+      "tags": ["corrección-bugs", "implementación-assets"],
+      "excerpt": {
+        "es": "Dirección visual de cintas, sistema SFX con BaseSFX y ajuste de capas en niveles 1_4 al 1_7."
+      }
     }
   ]
 }
