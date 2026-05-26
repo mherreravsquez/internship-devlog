@@ -203,7 +203,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "[VIDEO]",
+      "thumbnail": "https://i.imgur.com/mB5kwEY.mp4",
       "tags": ["gameplay", "plataformas", "refactorización"],
       "excerpt": {
         "es": "Renombrado de OneWayPlatform a PassThroughPlatform e implementación de Directional Platforms con soporte para recorridos de una sola dirección."
