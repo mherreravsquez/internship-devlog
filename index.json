@@ -192,6 +192,22 @@
       "excerpt": {
         "es": "Dirección visual de cintas, sistema SFX con BaseSFX y ajuste de capas en niveles 1_4 al 1_7."
       }
+    },
+    {
+      "slug": "2026-05-26",
+      "title": {
+        "es": "Refactorización de plataformas y nuevas Directional Platforms"
+      },
+      "date": "2026-05-26",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "[VIDEO]",
+      "tags": ["gameplay", "plataformas", "refactorización"],
+      "excerpt": {
+        "es": "Renombrado de OneWayPlatform a PassThroughPlatform e implementación de Directional Platforms con soporte para recorridos de una sola dirección."
+      }
     }
   ]
 }
