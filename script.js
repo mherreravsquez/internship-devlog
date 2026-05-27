@@ -134,6 +134,15 @@ function renderMd(md) {
         .replace(/</g, '&lt;')
         .replace(/>/g, '&gt;');
 
+    // Proteger iframes de YouTube (y otros)
+    html = html.replace(/<iframe[\s\S]*?<\/iframe>/gi, (tag) => {
+        const wrapped = `<div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;margin:16px 0;">
+        ${tag.replace(/width="[^"]*"/, 'width="100%"').replace(/height="[^"]*"/, 'height="100%"').replace(/<iframe/, '<iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"')}
+    </div>`;
+        media.push(wrapped);
+        return `\x00MED${media.length - 1}\x00`;
+    });
+    
     // 5. Convertir markdown links
     html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
 
