@@ -194,6 +194,22 @@
       }
     },
     {
+      "slug": "2026-05-21",
+      "title": {
+        "es": "Resumen tercera (mini) semana: 19 al 20 de mayo, 2026"
+      },
+      "date": "2026-05-21",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/fe7qhyg.mp4",
+      "tags": null,
+      "excerpt": {
+        "es": "Resumen tercera semana en UlpoMedia."
+      }
+    },
+    {
       "slug": "2026-05-26",
       "title": {
         "es": "Refactorización de plataformas y nuevas Directional Platforms"
@@ -223,6 +239,22 @@
       "tags": ["implementación-assets", "implementación-mecánicas"],
       "excerpt": {
         "es": "Audio Manager, implementación de música y assets faltantes."
+      }
+    },
+    {
+      "slug": "2026-05-30",
+      "title": {
+        "es": "Resumen cuarta semana: 26 al 29 de mayo, 2026"
+      },
+      "date": "2026-05-30",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/mB5kwEY.mp4",
+      "tags": null,
+      "excerpt": {
+        "es": "Resumen cuarta semana en UlpoMedia."
       }
     }
   ]
