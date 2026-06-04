@@ -172,7 +172,9 @@
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/fe7qhyg.mp4",
-      "tags": ["corrección-bugs"],
+      "tags": [
+        "corrección-bugs"
+      ],
       "excerpt": {
         "es": "Corrección del parallax con clonado de sprites y ajuste de capas en niveles del mundo 1 (1_1 al 1_3)."
       }
@@ -188,7 +190,10 @@
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/kpNgI40.mp4",
-      "tags": ["corrección-bugs", "implementación-assets"],
+      "tags": [
+        "corrección-bugs", 
+        "implementación-assets"
+      ],
       "excerpt": {
         "es": "Dirección visual de cintas, sistema SFX con BaseSFX y ajuste de capas en niveles 1_4 al 1_7."
       }
@@ -220,7 +225,10 @@
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/mB5kwEY.mp4",
-      "tags": ["gameplay", "plataformas", "refactorización"],
+      "tags": [
+        "corrección-bugs",
+        "implementación-mecánicas"
+      ],
       "excerpt": {
         "es": "Renombrado de OneWayPlatform a PassThroughPlatform e implementación de Directional Platforms con soporte para recorridos de una sola dirección."
       }
@@ -236,7 +244,10 @@
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/yB6W0UB.mp4",
-      "tags": ["implementación-assets", "implementación-mecánicas"],
+      "tags": [
+        "implementación-assets", 
+        "implementación-mecánicas"
+      ],
       "excerpt": {
         "es": "Audio Manager, implementación de música y assets faltantes."
       }
@@ -255,6 +266,25 @@
       "tags": null,
       "excerpt": {
         "es": "Resumen cuarta semana en UlpoMedia."
+      }
+    },
+    {
+      "slug": "2026-06-03",
+      "title": {
+        "es": "Revisión de niveles, corrección de bugs y restauración de Look Down"
+      },
+      "date": "2026-06-03",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "corrección-bugs",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Revisión de mundos 1 y 2, corrección de persistencia de managers, fix de inicialización de BaseSFX, etc."
       }
     }
   ]
