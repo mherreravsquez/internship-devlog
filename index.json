@@ -286,6 +286,24 @@
       "excerpt": {
         "es": "Revisión de mundos 1 y 2, corrección de persistencia de managers, fix de inicialización de BaseSFX, etc."
       }
+    },
+    {
+      "slug": "2026-06-04",
+      "title": {
+        "es": "Revisión de niveles, corrección de bugs y restauración de Look Down"
+      },
+      "date": "2026-06-04",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "diseño-niveles"
+      ],
+      "excerpt": {
+        "es": "Rediseño Nivel 2 del Mundo 1"
+      }
     }
   ]
 }
