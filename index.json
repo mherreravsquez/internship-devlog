@@ -290,7 +290,7 @@
     {
       "slug": "2026-06-04",
       "title": {
-        "es": "Comienza el rediseño de niveles del Mundo 1 (Level 2)"
+        "es": "Comienza el rediseño del Mundo 1"
       },
       "date": "2026-06-04",
       "type": "devlog",
@@ -303,6 +303,44 @@
       ],
       "excerpt": {
         "es": "Rediseño Nivel 2 del Mundo 1"
+      }
+    },
+    {
+      "slug": "2026-06-10",
+      "title": {
+        "es": "Rediseño de niveles del Mundo 1 y herramienta de visualización para trampolines"
+      },
+      "date": "2026-06-10",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "diseño-niveles",
+        "herramientas"
+      ],
+      "excerpt": {
+        "es": "Finalización del rediseño de los niveles 3 y 4 del Mundo 1 e implementación de un Gizmo para visualizar la altura alcanzada por los trampolines."
+      }
+    },
+    {
+      "slug": "2026-06-11",
+      "title": {
+        "es": "Finalización del rediseño del Nivel 4 y preparación del Boss del Mundo 1"
+      },
+      "date": "2026-06-11",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "diseño-niveles",
+        "implementación-mecánicas"
+      ],
+      "excerpt": {
+        "es": "Rediseño del Nivel 4 del Mundo 1, ajustes del Nivel 5 y preparación inicial de la batalla contra el primer jefe."
       }
     }
   ]
