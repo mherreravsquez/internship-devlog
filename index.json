@@ -342,6 +342,41 @@
       "excerpt": {
         "es": "Rediseño del Nivel 4 del Mundo 1, ajustes del Nivel 5 y preparación inicial de la batalla contra el primer jefe."
       }
+    },
+    {
+      "slug": "2026-06-13",
+      "title": {
+        "es": "Resumen quinta y sexta semana: 3 al 12 de junio, 2026"
+      },
+      "date": "2026-06-13",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": null,
+      "excerpt": {
+        "es": "Resumen de dos semanas de trabajo enfocadas en corrección de bugs, revisión de niveles, rediseño del Mundo 1 y análisis del sistema del Boss para futuras mejoras."
+      }
+    },
+    {
+      "slug": "2026-06-20",
+      "title": {
+        "es": "Resumen séptima semana: 16 al 19 de junio, 2026"
+      },
+      "date": "2026-06-20",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "diseño-niveles",
+        "corrección-bugs"
+      ],
+      "excerpt": {
+        "es": "Preparación del Boss del Mundo 1, mejoras visuales para el Vertical Slice, correcciones de gameplay y revisión del sistema de parallax."
+      }
     }
   ]
 }
