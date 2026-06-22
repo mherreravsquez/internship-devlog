@@ -377,6 +377,26 @@
       "excerpt": {
         "es": "Preparación del Boss del Mundo 1, mejoras visuales para el Vertical Slice, correcciones de gameplay y revisión del sistema de parallax."
       }
+    },
+    {
+      "slug": "2026-06-22",
+      "title": {
+        "es": "Balance de progresión y economía en proyecto secundario"
+      },
+      "date": "2026-06-22",
+      "type": "devlog",
+      "lang": "es",
+      "project": "proyecto-confidencial1",
+      "category": "ulpomedia",
+      "thumbnail": "",
+      "tags": [
+        "balance",
+        "economía",
+        "game-design"
+      ],
+      "excerpt": {
+        "es": "Jornada dedicada al balance de progresión, costos y mejoras de un proyecto secundario, además de la creación de nombres y descripciones narrativas para sus sistemas de progreso."
+      }
     }
   ]
 }

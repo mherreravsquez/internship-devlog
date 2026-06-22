@@ -1,0 +1,69 @@
+---
+
+title: "Balance de progresión y economía en proyecto secundario"
+date: "2026-06-22"
+project: "proyecto-confidencial1"
+category: "ulpomedia"
+tags: ["balance", "economía", "game-design"]
+
+---
+
+Durante la jornada del 22 de junio fui asignado temporalmente a un proyecto secundario del estudio. Debido a acuerdos de confidencialidad no es posible detallar aspectos específicos del juego, pero el trabajo realizado estuvo centrado principalmente en tareas de balance y progresión económica.
+
+---
+
+## Balance de mejoras y progresión
+
+La mayor parte de la jornada estuvo dedicada a revisar y ajustar el sistema de mejoras disponible para el jugador.
+
+El proyecto cuenta con distintas categorías de mejoras que afectan la generación de recursos mediante diferentes variables, como producción base, multiplicadores, valor monetario obtenido y tiempos de generación. El objetivo principal fue equilibrar la progresión de estas mejoras para mantener una sensación constante de avance y asegurar que cada tipo de mejora conserve un valor estratégico dentro de la economía del juego.
+
+Por ejemplo, una de las líneas de progresión estaba asociada a la producción de vacas. En este caso, el sistema combinaba una cantidad base de vacas generadas, un multiplicador de producción y un modificador económico que aumentaba el dinero obtenido. El trabajo consistió en ajustar cuánto aumentaba cada mejora por nivel y cuánto debía costar adquirirla para evitar que una sola mejora dominara toda la progresión.
+
+De forma similar, otra línea de progresión estaba asociada a pollos, donde además existía una mejora que reducía el tiempo necesario para obtener nuevos recursos. Debido a su impacto directo en la velocidad de generación, este tipo de mejora requería costos significativamente mayores que el resto para mantener el equilibrio de la economía.
+
+Para ello se revisaron los incrementos otorgados por cada nivel de mejora, las relaciones existentes entre las distintas variables y los costos asociados a su adquisición. Esto permitió ajustar la curva de progresión para evitar mejoras excesivamente dominantes o poco atractivas para el jugador.
+
+---
+
+## Diseño de nombres y descripciones
+
+Una vez finalizada la etapa principal de balance, se trabajó en la presentación de las mejoras desde una perspectiva más narrativa.
+
+Se definieron nombres y descripciones para cada una de las categorías de mejoras disponibles en el proyecto, buscando que cada progresión transmitiera visualmente una sensación de crecimiento y evolución acorde al tono general del juego.
+
+Por ejemplo, en lugar de presentar una mejora simplemente como "Vacas +1", se diseñaron nombres que representaran una evolución dentro de la granja, pasando desde pequeños cambios como mejorar el alimento o construir nuevos establos, hasta expansiones más avanzadas que reflejan una producción a gran escala.
+
+De la misma forma, las descripciones fueron redactadas para reforzar la fantasía de progreso del jugador, explicando cada mejora desde una perspectiva narrativa en lugar de limitarse a mostrar únicamente valores numéricos.
+
+El objetivo fue que desbloquear una mejora se sintiera como una expansión real de la granja y no solamente como un aumento de estadísticas.
+
+Este es un ejemplo para la mejora "Vacas Base":
+
+| Nivel | Ejemplo narrativo |
+|--------|------------------|
+| 1 | Primera Vaca |
+| 2 | Dúo Dinámico |
+| 3 | Pequeño Rebaño |
+| 4 | Hora de Expandirse |
+| 5 | Establo Reforzado |
+| 6 | Pastos Más Verdes |
+| 7 | Rebaño en Crecimiento |
+| etc.|
+
+---
+
+## Tareas completadas
+
+* ~~Balancear los distintos tipos de mejoras del sistema económico.~~
+* ~~Ajustar valores de progresión y costos de adquisición.~~
+* ~~Revisar relaciones entre producción base, multiplicadores y generación de recursos.~~
+* ~~Crear nombres para las distintas mejoras disponibles.~~
+* ~~Redactar descripciones narrativas para cada línea de progresión.~~
+
+## Tareas pendientes
+
+* Retomar trabajo en Dana Relics DX.
+* Continuar tareas asignadas según prioridades del estudio.
+
+---
