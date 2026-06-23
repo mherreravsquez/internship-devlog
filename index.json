@@ -278,7 +278,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "corrección-bugs",
         "implementación-mecánicas"
@@ -297,7 +297,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "diseño-niveles"
       ],
@@ -315,7 +315,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "diseño-niveles",
         "herramientas"
@@ -334,7 +334,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "diseño-niveles",
         "implementación-mecánicas"
@@ -353,7 +353,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": null,
       "excerpt": {
         "es": "Resumen de dos semanas de trabajo enfocadas en corrección de bugs, revisión de niveles, rediseño del Mundo 1 y análisis del sistema del Boss para futuras mejoras."
@@ -369,7 +369,7 @@
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "diseño-niveles",
         "corrección-bugs"
@@ -388,7 +388,7 @@
       "lang": "es",
       "project": "proyecto-confidencial1",
       "category": "ulpomedia",
-      "thumbnail": "",
+      "thumbnail": null,
       "tags": [
         "balance",
         "economía",
@@ -396,6 +396,22 @@
       ],
       "excerpt": {
         "es": "Jornada dedicada al balance de progresión, costos y mejoras de un proyecto secundario, además de la creación de nombres y descripciones narrativas para sus sistemas de progreso."
+      }
+    },
+    {
+      "slug": "2026-06-23",
+      "title": {
+        "es": "Nuevas animaciones del jugador y mejora de transiciones entre escenas"
+      },
+      "date": "2026-06-23",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": null,
+      "excerpt": {
+        "es": "Implementación de nuevas animaciones para Dana, restauración del sistema de cámaras basado en rieles y rediseño completo de las transiciones entre niveles y el overworld."
       }
     }
   ]
