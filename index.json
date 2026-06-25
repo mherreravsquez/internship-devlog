@@ -390,8 +390,6 @@
       "category": "ulpomedia",
       "thumbnail": null,
       "tags": [
-        "balance",
-        "economía",
         "game-design"
       ],
       "excerpt": {
@@ -412,6 +410,22 @@
       "tags": null,
       "excerpt": {
         "es": "Implementación de nuevas animaciones para Dana, restauración del sistema de cámaras basado en rieles y rediseño completo de las transiciones entre niveles y el overworld."
+      }
+    },
+    {
+      "slug": "2026-06-25",
+      "title": {
+        "es": "Análisis y adaptación del Boss del Mundo 2"
+      },
+      "date": "2026-06-25",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": null,
+      "excerpt": {
+        "es": "Corrección final de las nuevas transiciones entre escenas y análisis detallado del Boss del Mundo 2 para su futura adaptación al sistema modular de bosses."
       }
     }
   ]
