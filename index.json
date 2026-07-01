@@ -427,6 +427,22 @@
       "excerpt": {
         "es": "Corrección final de las nuevas transiciones entre escenas y análisis detallado del Boss del Mundo 2 para su futura adaptación al sistema modular de bosses."
       }
+    },
+    {
+      "slug": "2026-06-30",
+      "title": {
+        "es": "Reestructuración lógica Boss Cnagrejo"
+      },
+      "date": "2026-06-25",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": null,
+      "excerpt": {
+        "es": "Reestructuración del Boss Cangrejo e implementación de animaciones de victoria y meta."
+      }
     }
   ]
 }
