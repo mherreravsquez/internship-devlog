@@ -431,17 +431,33 @@
     {
       "slug": "2026-06-30",
       "title": {
-        "es": "Reestructuración lógica Boss Cnagrejo"
+        "es": "Reestructuración lógica Boss Cangrejo"
       },
-      "date": "2026-06-25",
+      "date": "2026-06-30",
       "type": "devlog",
       "lang": "es",
       "project": "dana-relics-1-dx",
       "category": "ulpomedia",
       "thumbnail": null,
-      "tags": null,
+      "tags": ["diseño-niveles"],
       "excerpt": {
         "es": "Reestructuración del Boss Cangrejo e implementación de animaciones de victoria y meta."
+      }
+    },
+    {
+      "slug": "2026-07-02",
+      "title": {
+        "es": "Inicio del diseño de niveles del Mundo 4 y reorganización de proyecto"
+      },
+      "date": "2026-07-02",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": ["diseño-niveles"],
+      "excerpt": {
+        "es": "Comienzo del diseño de niveles de playa, reorganización de carpetas y limpieza de proyecto."
       }
     }
   ]
