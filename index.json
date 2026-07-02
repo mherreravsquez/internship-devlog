@@ -429,6 +429,38 @@
       }
     },
     {
+      "slug": "2026-06-26",
+      "title": {
+        "es": "Perfeccionamiento del prototipo del Boss 2"
+      },
+      "date": "2026-06-26",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": ["diseño-niveles"],
+      "excerpt": {
+        "es": "Perfeccionamiento del prototipo del Boss 2, ajustes de comportamiento y aumento de vidas a 4."
+      }
+    },
+    {
+      "slug": "2026-06-27",
+      "title": {
+        "es": "Resumen octava semana: 22 al 26 de junio, 2026"
+      },
+      "date": "2026-06-27",
+      "type": "devlog-semanal",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": null,
+      "excerpt": {
+        "es": "Balance en proyecto secundario, animaciones de Dana, transiciones, análisis e implementación del Boss 2."
+      }
+    },
+    {
       "slug": "2026-06-30",
       "title": {
         "es": "Reestructuración lógica Boss Cangrejo"
