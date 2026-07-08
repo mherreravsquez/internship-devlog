@@ -491,6 +491,24 @@
       "excerpt": {
         "es": "Comienzo del diseño de niveles de playa, reorganización de carpetas y limpieza de proyecto."
       }
+    },
+    {
+      "slug": "2026-07-07",
+      "title": {
+        "es": "Diseño del primer nivel del Mundo 4"
+      },
+      "date": "2026-07-07",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://imgur.com/3tinPn8.png",
+      "tags": [
+        "diseño-niveles"
+      ],
+      "excerpt": {
+        "es": "Diseño del layout del primer nivel del Mundo 4, definiendo la progresión de mecánicas y el aprendizaje del jugador."
+      }
     }
   ]
 }
