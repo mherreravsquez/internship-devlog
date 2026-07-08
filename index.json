@@ -509,6 +509,24 @@
       "excerpt": {
         "es": "Diseño del layout del primer nivel del Mundo 4, definiendo la progresión de mecánicas y el aprendizaje del jugador."
       }
+    },
+    {
+      "slug": "2026-07-08",
+      "title": {
+        "es": "Del papel a Unity: comienza el blocking del Mundo 4"
+      },
+      "date": "2026-07-08",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://imgur.com/TBauZHy.png",
+      "tags": [
+        "diseño-niveles"
+      ],
+      "excerpt": {
+        "es": "Inicio del blocking del Nivel 4_1, ajustes de diseño durante el playtesting y descubrimiento de problemas en la mecánica de nado."
+      }
     }
   ]
 }
