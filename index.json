@@ -527,6 +527,24 @@
       "excerpt": {
         "es": "Inicio del blocking del Nivel 4_1, ajustes de diseño durante el playtesting y descubrimiento de problemas en la mecánica de nado."
       }
+    },
+    {
+      "slug": "2026-07-09",
+      "title": {
+        "es": "Ajustes finales al Nivel 4_1 y análisis de la SwimAbility"
+      },
+      "date": "2026-07-09",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/6tGkFmV.png",
+      "tags": [
+        "diseño-niveles"
+      ],
+      "excerpt": {
+        "es": "Finalización del blocking del Nivel 4_1, preparación de cámaras y análisis de la mecánica de nado para su futura reestructuración."
+      }
     }
   ]
 }
