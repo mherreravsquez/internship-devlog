@@ -545,6 +545,25 @@
       "excerpt": {
         "es": "Finalización del blocking del Nivel 4_1, preparación de cámaras y análisis de la mecánica de nado para su futura reestructuración."
       }
+    },
+    {
+      "slug": "2026-07-10",
+      "title": {
+        "es": "Haciendo que nadar se sienta bien"
+      },
+      "date": "2026-07-10",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": "https://i.imgur.com/ciM5Fjx.png",
+      "tags": [
+        "programación",
+        "gameplay"
+      ],
+      "excerpt": {
+        "es": "Reestructuración de la SwimAbility, corrección de bugs relacionados con el nado y análisis de referencias para el combate bajo el agua."
+      }
     }
   ]
 }
