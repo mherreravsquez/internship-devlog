@@ -566,9 +566,28 @@
       }
     },
     {
-      "slug": "2026-07-28",
+      "slug": "2026-07-27",
       "title": {
         "es": "De vuelta a Ulpo: comenzando el rework de la nueva web"
+      },
+      "date": "2026-07-27",
+      "type": "devlog",
+      "lang": "es",
+      "project": "ulpo-web",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web",
+        "ux-ui"
+      ],
+      "excerpt": {
+        "es": "Comenzó el rediseño de la nueva página web de UlpoMedia, definiendo su estructura principal, la adaptación para dispositivos móviles y la futura integración de un juego web."
+      }
+    },
+    {
+      "slug": "2026-07-28",
+      "title": {
+        "es": "Haciendo que la web cobre vida"
       },
       "date": "2026-07-28",
       "type": "devlog",
@@ -578,11 +597,49 @@
       "thumbnail": null,
       "tags": [
         "web",
-        "frontend",
-        "responsive"
+        "ux-ui"
       ],
       "excerpt": {
-        "es": "Comenzó el rediseño de la nueva página web de UlpoMedia, definiendo su estructura principal, la adaptación para dispositivos móviles y la futura integración de un juego web."
+        "es": "Implementación del sistema de cambio de estética según la hora local y ajustes de responsividad para preparar la integración del juego HTML5."
+      }
+    },
+    {
+      "slug": "2026-07-30",
+      "title": {
+        "es": "La web ya empieza a sentirse como un producto"
+      },
+      "date": "2026-07-30",
+      "type": "devlog",
+      "lang": "es",
+      "project": "ulpo-web",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web",
+        "ux-ui",
+        "html5"
+      ],
+      "excerpt": {
+        "es": "Se implementó el desplazamiento por secciones, se integró el juego HTML5 dentro de la web y comenzaron las bases para nuevas interacciones inspiradas en una consola con cartuchos."
+      }
+    },
+    {
+      "slug": "2026-07-31",
+      "title": {
+        "es": "Cerrando el primer rework de la web"
+      },
+      "date": "2026-07-31",
+      "type": "devlog",
+      "lang": "es",
+      "project": "ulpo-web",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web",
+        "ux-ui"
+      ],
+      "excerpt": {
+        "es": "Se completó la primera versión de la nueva web de UlpoMedia, finalizando el carrusel de cartuchos, el modal About Us y los últimos ajustes de navegación e interfaz."
       }
     }
   ]
