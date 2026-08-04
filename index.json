@@ -558,8 +558,7 @@
       "category": "ulpomedia",
       "thumbnail": "https://i.imgur.com/ciM5Fjx.png",
       "tags": [
-        "programación",
-        "gameplay"
+        "implementación-mecánicas"
       ],
       "excerpt": {
         "es": "Reestructuración de la SwimAbility, corrección de bugs relacionados con el nado y análisis de referencias para el combate bajo el agua."
@@ -640,6 +639,24 @@
       ],
       "excerpt": {
         "es": "Se completó la primera versión de la nueva web de UlpoMedia, finalizando el carrusel de cartuchos, el modal About Us y los últimos ajustes de navegación e interfaz."
+      }
+    },
+    {
+      "slug": "2026-08-03",
+      "title": {
+        "es": "De vuelta a Dana Relics DX"
+      },
+      "date": "2026-08-03",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "corrección-bugs"
+      ],
+      "excerpt": {
+        "es": "Regreso al desarrollo de Dana Relics DX, corrigiendo un bug del sistema de fade, implementando las animaciones finales de nado y comenzando el rediseño del sistema de respawn de enemigos."
       }
     }
   ]
