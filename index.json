@@ -658,6 +658,24 @@
       "excerpt": {
         "es": "Regreso al desarrollo de Dana Relics DX, corrigiendo un bug del sistema de fade, implementando las animaciones finales de nado y comenzando el rediseño del sistema de respawn de enemigos."
       }
+    },
+    {
+      "slug": "2026-08-04",
+      "title": {
+        "es": "A veces toca dar un paso al lado"
+      },
+      "date": "2026-08-04",
+      "type": "devlog",
+      "lang": "es",
+      "project": "dana-relics-1-dx",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "corrección-bugs"
+      ],
+      "excerpt": {
+        "es": "Intenté replantear el sistema de respawn de enemigos, descubrí una limitación en el sistema de cámaras y finalicé el día siendo reasignado al desarrollo de un nuevo juego web en Unity."
+      }
     }
   ]
 }
