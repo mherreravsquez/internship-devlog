@@ -676,6 +676,25 @@
       "excerpt": {
         "es": "Intenté replantear el sistema de respawn de enemigos, descubrí una limitación en el sistema de cámaras y finalicé el día siendo reasignado al desarrollo de un nuevo juego web en Unity."
       }
+    },
+    {
+      "slug": "2026-08-06",
+      "title": {
+        "es": "Comienza el desarrollo de Tank Web Game"
+      },
+      "date": "2026-08-06",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "procedural"
+      ],
+      "excerpt": {
+        "es": "Primeros dos días de desarrollo del nuevo juego web de tanques para UlpoMedia, estableciendo la base del proyecto, el sistema de oleadas y una primera aproximación a la generación procedural."
+      }
     }
   ]
 }
