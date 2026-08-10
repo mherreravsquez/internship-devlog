@@ -695,6 +695,24 @@
       "excerpt": {
         "es": "Primeros dos días de desarrollo del nuevo juego web de tanques para UlpoMedia, estableciendo la base del proyecto, el sistema de oleadas y una primera aproximación a la generación procedural."
       }
+    },
+    {
+      "slug": "2026-08-07",
+      "title": {
+        "es": "Poniendo orden al caos"
+      },
+      "date": "2026-08-07",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "procedural"
+      ],
+      "excerpt": {
+        "es": "El prototipo comienza a tomar forma: se implementaron oleadas progresivas, generación de mapas mediante archivos ASCII, misiles con daño en área y rebake automático del NavMesh."
+      }
     }
   ]
 }
