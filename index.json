@@ -708,10 +708,30 @@
       "category": "ulpomedia",
       "thumbnail": null,
       "tags": [
+        "web-game",
         "procedural"
       ],
       "excerpt": {
         "es": "El prototipo comienza a tomar forma: se implementaron oleadas progresivas, generación de mapas mediante archivos ASCII, misiles con daño en área y rebake automático del NavMesh."
+      }
+    },
+    {
+      "slug": "2026-08-10",
+      "title": {
+        "es": "Finalmente, la grilla funciona"
+      },
+      "date": "2026-08-10",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "procedural"
+      ],
+      "excerpt": {
+        "es": "Se corrigieron los problemas de orientación y lectura de los chunks generados mediante archivos .txt, dejando funcional el sistema de generación procedural y avanzando en la presentación del Tank Web Game."
       }
     }
   ]
