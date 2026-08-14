@@ -733,6 +733,25 @@
       "excerpt": {
         "es": "Se corrigieron los problemas de orientación y lectura de los chunks generados mediante archivos .txt, dejando funcional el sistema de generación procedural y avanzando en la presentación del Tank Web Game."
       }
+    },
+    {
+      "slug": "2026-08-13-tank-web-game",
+      "title": {
+        "es": "Tanques, árboles y misiles rebeldes"
+      },
+      "date": "2026-08-13",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "dotween"
+      ],
+      "excerpt": {
+        "es": "Se completó la integración de los modelos finales, se añadieron diferentes modelos para mostrar el estado de los edificios, árboles y autos interactivos, y comenzaron las primeras pruebas de animación para los misiles utilizando DOTween."
+      }
     }
   ]
 }
