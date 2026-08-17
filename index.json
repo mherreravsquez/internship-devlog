@@ -735,7 +735,7 @@
       }
     },
     {
-      "slug": "2026-08-13-tank-web-game",
+      "slug": "2026-08-13",
       "title": {
         "es": "Tanques, árboles y misiles rebeldes"
       },
@@ -751,6 +751,25 @@
       ],
       "excerpt": {
         "es": "Se completó la integración de los modelos finales, se añadieron diferentes modelos para mostrar el estado de los edificios, árboles y autos interactivos, y comenzaron las primeras pruebas de animación para los misiles utilizando DOTween."
+      }
+    },
+    {
+      "slug": "2026-08-14",
+      "title": {
+        "es": "Un poco de UI, corazones y una explosión"
+      },
+      "date": "2026-08-14",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "dotween"
+      ],
+      "excerpt": {
+        "es": "La interfaz del Tank Web Game comienza a tomar forma con nuevos menús, control de audio y feedback visual, además de implementar el sistema de vidas y la transición de destrucción del tanque mediante DOTween."
       }
     }
   ]
