@@ -771,6 +771,43 @@
       "excerpt": {
         "es": "La interfaz del Tank Web Game comienza a tomar forma con nuevos menús, control de audio y feedback visual, además de implementar el sistema de vidas y la transición de destrucción del tanque mediante DOTween."
       }
+    },
+    {
+      "slug": "2026-08-17",
+      "title": {
+        "es": "Juice, mirillas y un poco de caos"
+      },
+      "date": "2026-08-17",
+      "type": "devlog",
+      "lang": "es",
+      "project": "tank-web-game",
+      "category": "ulpomedia",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "dotween"
+      ],
+      "excerpt": {
+        "es": "El Tank Web Game sigue tomando forma con nuevos efectos de feedback, sonidos, una mirilla para PC y los primeros pasos para conectar las transiciones entre fases."
+      }
+    },
+    {
+      "slug": "2026-08-20",
+      "title": {
+        "es": "Todo juego debe terminarse algún día."
+      },
+      "date": "2026-08-20",
+      "type": "devlog",
+      "lang": "es",
+      "game": "Tank Web Game",
+      "thumbnail": null,
+      "tags": [
+        "web-game",
+        "dotween"
+      ],
+      "excerpt": {
+        "es": "El Tank Web Game sigue tomando forma con nuevas transiciones, efectos, sonidos y variaciones de mapa, además de varios pequeños detalles de presentación."
+      }
     }
   ]
 }
